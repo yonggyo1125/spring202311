@@ -1,4 +1,4 @@
-package exam01;
+package exam02;
 
 public class Ex06 {
     public static void main(String[] args) {
