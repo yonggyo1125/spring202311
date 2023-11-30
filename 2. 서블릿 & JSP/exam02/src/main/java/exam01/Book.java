@@ -10,11 +10,14 @@ import lombok.*;
 //@AllArgsConstructor // 모든 멤버 변수 초기화 생성자
 //@RequiredArgsConstructor
 //@EqualsAndHashCode
-@Data // @Getter @Setter @ToString @EqualsAndHashCode
+//@Data // @Getter @Setter @ToString @EqualsAndHashCode
 public class Book {
     private String title;
     private String author;
     private String publisher;
 
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
