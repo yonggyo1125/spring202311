@@ -7,6 +7,19 @@ public class Book {
 
     private Book() {}
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", publisher='" + publisher + '\'' +
+                '}';
+    }
+
     private static class Builder {
         private Book instance = new Book();
 
