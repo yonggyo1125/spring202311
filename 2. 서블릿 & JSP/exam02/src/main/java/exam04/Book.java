@@ -20,7 +20,7 @@ public class Book {
                 '}';
     }
 
-    private static class Builder {
+    protected static class Builder {
         private Book instance = new Book();
 
         public Builder title(String title) {
