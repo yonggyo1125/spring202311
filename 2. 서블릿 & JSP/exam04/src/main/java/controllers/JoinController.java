@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/member/join")
 public class JoinController extends HttpServlet {
@@ -16,8 +17,14 @@ public class JoinController extends HttpServlet {
 
         req.setAttribute("title", "회원가입");
 
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<h1>상단</h1>");
+
         RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/templates/member/join.jsp"); // View
-        rd.forward(req, resp);
+        rd.include(req, resp);
+
+        out.println("<h1>하단</h1>");
     }
 
     @Override
