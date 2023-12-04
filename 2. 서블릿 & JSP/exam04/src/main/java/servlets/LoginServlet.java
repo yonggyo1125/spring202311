@@ -28,6 +28,4 @@ public class LoginServlet extends HttpServlet {
     public void destroy() {
         System.out.println("destroy()!!!");
     }
-
-
 }
