@@ -12,6 +12,6 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        System.out.println("로그인 페이지!!!");
     }
 }
