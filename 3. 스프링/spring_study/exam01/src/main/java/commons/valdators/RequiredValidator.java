@@ -1,0 +1,9 @@
+package commons.valdators;
+
+public interface RequiredValidator {
+    default void checkRequired(String str, RuntimeException e) {
+        if (str == null || str.isBlank()) {
+            throw e;
+        }
+    }
+}
