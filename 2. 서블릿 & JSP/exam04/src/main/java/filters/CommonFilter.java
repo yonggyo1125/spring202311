@@ -12,5 +12,9 @@ public class CommonFilter implements Filter {
 
         chain.doFilter(new CommonRequestWrapper((HttpServletRequest) request),
                 response);
+
+
+        HttpServletRequest req = (HttpServletRequest) request;
+
     }
 }
