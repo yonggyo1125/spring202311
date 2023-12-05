@@ -9,6 +9,11 @@ public class Ex02 {
 
         for (Animal animal : animals) {
             animal.move();
+
+            if (animal instanceof  Human) {
+                Human human = (Human) animal;
+                human.readBook();
+            }
         }
     }
 }
