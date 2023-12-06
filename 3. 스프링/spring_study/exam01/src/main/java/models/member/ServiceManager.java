@@ -15,7 +15,7 @@ public class ServiceManager {
     }
 
     public MemberDao memberDao() {
-        return new MemberDao();
+        return new CachedMemberDao();
     }
 
     public JoinValidator joinValidator() {
