@@ -13,7 +13,7 @@ public class AppCtx3 {
         return new MemberDao();
     }
 
-    @Bean
+    //@Bean
     public DateTimeFormatter formatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
 
