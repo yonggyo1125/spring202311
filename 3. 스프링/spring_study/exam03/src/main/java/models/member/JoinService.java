@@ -1,8 +1,13 @@
 package models.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class JoinService {
 
+    @Autowired
     private MemberDao memberDao;
+
+    @Autowired
     private JoinValidator validator;
 
     public JoinService() {}

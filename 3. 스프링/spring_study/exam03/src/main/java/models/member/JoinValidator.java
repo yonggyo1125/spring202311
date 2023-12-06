@@ -3,9 +3,11 @@ package models.member;
 import commons.exceptions.BadRequestException;
 import commons.valdators.RequiredValidator;
 import commons.valdators.Validator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class JoinValidator implements Validator<Member>, RequiredValidator {
 
+    @Autowired
     private MemberDao memberDao;
 
     public JoinValidator() {}

@@ -1,6 +1,7 @@
 package main;
 
 import config.AppCtx;
+import config.AppCtx2;
 import models.member.JoinService;
 import models.member.ListService;
 import models.member.Member;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 
 public class Ex01 {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx2.class);
 
         JoinService joinService = ctx.getBean("joinService", JoinService.class);
         ListService listService = ctx.getBean("listService", ListService.class);
