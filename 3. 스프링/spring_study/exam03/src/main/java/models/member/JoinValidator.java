@@ -8,6 +8,8 @@ public class JoinValidator implements Validator<Member>, RequiredValidator {
 
     private MemberDao memberDao;
 
+    public JoinValidator() {}
+
     public JoinValidator(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
