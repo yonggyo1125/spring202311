@@ -1,6 +1,8 @@
 package models.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,15 +12,16 @@ public class ListService {
 
     private MemberDao memberDao;
 
-    private DateTimeFormatter formatter;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy.MM.dd");
 
-    @Autowired(required = false)
-    public void setFormatter(DateTimeFormatter formatter) {
+    //@Autowired(required = false)
+    @Autowired
+    public void setFormatter(@Nullable DateTimeFormatter formatter) {
         this.formatter = formatter;
     }
 
     @Autowired
-    public void setMemberDao(MemberDao memberDao) {
+    public void setMemberDao(@Qualifier("memberDao") MemberDao memberDao) {
 
         this.memberDao = memberDao;
     }
