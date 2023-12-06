@@ -13,4 +13,6 @@ public class Member {
     private String userNm;
 
     private LocalDateTime regDt;
+
+
 }
