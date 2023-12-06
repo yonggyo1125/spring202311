@@ -12,7 +12,7 @@ public class ListService {
 
     private DateTimeFormatter formatter;
 
-    @Autowired
+    @Autowired(required = false)
     public void setFormatter(DateTimeFormatter formatter) {
         this.formatter = formatter;
     }
@@ -26,8 +26,10 @@ public class ListService {
     public void print() {
         List<Member> members = memberDao.getList();
         for (Member member : members) {
-            String regDtStr = formatter.format(member.getRegDt());
-            member.setRegDtStr(regDtStr);
+            if (formatter != null) {
+                String regDtStr = formatter.format(member.getRegDt());
+                member.setRegDtStr(regDtStr);
+            }
 
             System.out.println(member);
         }
