@@ -20,5 +20,8 @@ public class Ex06 {
         member.setUserNm("사용자01");
         member.setRegDt(LocalDateTime.now());
 
+        joinService.join(member); // 가입
+
+        listService.print(); // 목록 출력
     }
 }

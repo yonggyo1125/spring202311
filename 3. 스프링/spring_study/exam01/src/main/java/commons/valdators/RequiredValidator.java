@@ -4,7 +4,7 @@ import org.springframework.util.StringUtils;
 
 public interface RequiredValidator {
     default void checkRequired(String str, RuntimeException e) {
-        if (StringUtils.hasText(str)) {
+        if (!StringUtils.hasText(str)) {
             throw e;
         }
     }
