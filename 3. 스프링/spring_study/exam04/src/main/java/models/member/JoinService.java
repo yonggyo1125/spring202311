@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class JoinService {
+public class JoinService { // 빈의 이름 joinService
 
     @Autowired
     private MemberDao memberDao;

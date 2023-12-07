@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class MemberDao {
+public class MemberDao { // memberDao
     private static Map<String, Member> members = new HashMap<>();
 
     public void register(Member member) {
