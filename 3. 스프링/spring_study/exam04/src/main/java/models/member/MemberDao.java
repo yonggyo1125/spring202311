@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ManualBean
 @Repository
 public class MemberDao { // memberDao
     private static Map<String, Member> members = new HashMap<>();

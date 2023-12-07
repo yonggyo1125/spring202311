@@ -7,9 +7,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 
 @Configuration
+/*
 @ComponentScan(value="models",
         excludeFilters = @ComponentScan.Filter(type= FilterType.ANNOTATION,
                 classes= ManualBean.class))
+
+ */
+/*
+@ComponentScan(value="models",
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE,
+        classes = MemberDao.class))
+
+ */
+@ComponentScan(value="models",
+    excludeFilters = @ComponentScan.Filter(type=FilterType.ASPECTJ,
+        pattern="models..*Dao"))
 public class AppCtx {
     /*
     @Bean
