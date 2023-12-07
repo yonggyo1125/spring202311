@@ -15,7 +15,7 @@ public class ProxyCalculator implements Calculator {
 
         try {
 
-            long result = calculator.factorial(num); // 핵심 기능
+            long result = calculator.factorial(num); // 핵심 기능을 대신 수행
 
             return result;
         } finally {
