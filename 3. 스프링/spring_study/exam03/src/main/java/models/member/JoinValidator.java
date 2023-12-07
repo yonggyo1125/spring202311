@@ -5,11 +5,12 @@ import commons.valdators.RequiredValidator;
 import commons.valdators.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JoinValidator implements Validator<Member>, RequiredValidator {
 
     @Autowired
-    @Qualifier("memberDao")
     private MemberDao memberDao;
 
     public JoinValidator() {}

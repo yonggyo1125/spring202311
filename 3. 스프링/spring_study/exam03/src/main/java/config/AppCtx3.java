@@ -15,12 +15,13 @@ public class AppCtx3 {
 
         return new MemberDao();
     }
-
+    /*
     @Bean
     public MemberDao memberDao2() {
+
         return new MemberDao();
     }
-
+    */
     //@Bean
     public DateTimeFormatter formatter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
