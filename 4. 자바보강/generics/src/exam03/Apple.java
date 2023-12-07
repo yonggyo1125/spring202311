@@ -1,4 +1,6 @@
-package exam02;
+package exam03;
+
+import exam02.Fruit;
 
 public class Apple extends Fruit {
     public void print() {
