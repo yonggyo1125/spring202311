@@ -12,6 +12,7 @@ public class ListService {
 
     @Autowired
     public void setMemberDao(MemberDao memberDao) {
+
         this.memberDao = memberDao;
     }
 
