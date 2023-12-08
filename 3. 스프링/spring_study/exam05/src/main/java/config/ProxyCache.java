@@ -4,11 +4,13 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Aspect
+@Order(1)
 public class ProxyCache {
 
     private Map<Long, Object> cacheData = new HashMap<>();
@@ -26,7 +28,7 @@ public class ProxyCache {
             return cacheData.get(num);
         }
 
-        Object result = joinPoint.proceed();
+        Object result = joinPoint.proceed(); // ProxyCalculator::proceed()
 
         // 캐시 저장
         cacheData.put(num, result);

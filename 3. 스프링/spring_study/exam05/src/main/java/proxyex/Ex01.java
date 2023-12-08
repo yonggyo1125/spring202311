@@ -13,6 +13,7 @@ public class Ex01 {
         long etime = System.nanoTime();    // 공통 기능
         System.out.printf("걸린시간 : %d%n", etime - stime);
 
+
         stime = System.nanoTime(); // 공통 기능
 
         // 핵심 기능
