@@ -16,6 +16,13 @@ public class Ex04 {
                     " VALUES (SEQ_MEMBER.nextval, ?, ?, ?, ?)";
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, "USER02");
+            pstmt.setString(2, "123456");
+            pstmt.setString(3, "사용자02");
+            pstmt.setString(4, "user02@test.org");
+
+            int result = pstmt.executeUpdate();
+            System.out.println(result);
 
         } catch (SQLException e) {
             e.printStackTrace();
