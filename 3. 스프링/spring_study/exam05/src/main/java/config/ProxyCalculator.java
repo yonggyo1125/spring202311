@@ -16,7 +16,8 @@ public class ProxyCalculator {
 
     @Around("publicTarget()")
      */
-    @Around("execution(* aopex..*(..))")
+    //@Around("execution(* aopex..*(..))")
+    @Around("CommonPointcut.publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
         //Signature sig = joinPoint.getSignature();

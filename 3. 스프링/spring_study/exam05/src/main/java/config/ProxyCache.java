@@ -15,10 +15,7 @@ public class ProxyCache {
 
     private Map<Long, Object> cacheData = new HashMap<>();
 
-    @Pointcut("execution(* aopex..*(long))")
-    public void publicTarget() {}
-
-    @Around("publicTarget()")
+    @Around("CommonPointcut.publicTarget()")
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
         Object[] args = joinPoint.getArgs(); // 매개변수로 투입된 인자 값( 예 - 10L)
