@@ -9,6 +9,7 @@ public class AppCtx {
 
     @Bean
     public Calculator calculator() {
+
         return new RecCalculator();
     }
 }
