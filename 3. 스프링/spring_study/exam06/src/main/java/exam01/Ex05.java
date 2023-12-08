@@ -1,6 +1,7 @@
 package exam01;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class Ex05 {
     public static void main(String[] args) throws ClassNotFoundException {
@@ -14,6 +15,15 @@ public class Ex05 {
              PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
 
+            while(rs.next()) {
+                long userNo = rs.getLong("USER_NO");
+                String userId = rs.getString("USER_ID");
+                String userNm = rs.getString("USER_NM");
+                LocalDateTime regDt = rs.getTimestamp("REG_DT").toLocalDateTime();
+
+                System.out.printf("userNo=%d, userId=%s, userNm=%s, regDt=%s%n",
+                        userNo, userId, userNm, regDt);
+            }
 
 
         } catch (SQLException e) {
