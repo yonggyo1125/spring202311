@@ -1,9 +1,9 @@
 package exam04;
 
 public class Student {
-    private int id;
-    private String name;
-    private String subject;
+     static int id;
+     String name;
+     String subject;
 
     public Student(int id, String name, String subject) {
         this.id = id;
@@ -11,8 +11,14 @@ public class Student {
         this.subject = subject;
     }
 
+    public static void staticMethod() {
+        System.out.println("정적 메서드");
+        id = 1000;
+    }
+
     @Override
     public String toString() {
+        //this
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
