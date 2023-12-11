@@ -23,8 +23,8 @@ public class MemberMapperTest {
     @DisplayName("회원 목록 조회 테스트")
     void memberListTest() {
         Member member = Member.builder()
-                //.userId("%USER%")
-                .userNm("%사용자%")
+                .userId("USER")
+                .userNm("사용자")
                 .build();
         List<Member> members = mapper.getMembers(member);
 
