@@ -43,4 +43,25 @@ public class MemberMapperTest {
          int affectedRow = mapper.register(member);
          System.out.println(affectedRow);
     }
+    
+    @Test
+    @DisplayName("회원정보 수정 테스트")
+    void memberUpdateTest() {
+        Member member = Member.builder()
+                .userId("USER99")
+                .userPw("(수정)123456")
+                .userNm("(수정)사용자99")
+                .email("(수정)user99@test.org")
+                .build();
+
+        int affectedRows = mapper.update(member);
+        System.out.println(affectedRows);
+    }
+
+    @Test
+    @DisplayName("회원 삭제 테스트")
+    void memberDeleteTest() {
+        int affectedRows = mapper.delete("USER100");
+        System.out.println(affectedRows);
+    }
 }

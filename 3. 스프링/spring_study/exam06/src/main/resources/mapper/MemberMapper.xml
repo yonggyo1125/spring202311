@@ -7,8 +7,12 @@
         SELECT * FROM MEMBER
     </select>
     <insert id="register">
+        <selectKey keyProperty="userNo" order="BEFORE" resultType="long">
+            SEQ_MEMBER.nextval
+        </selectKey>
+
         INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL)
-        VALUES (SEQ_MEMBER.nextval, #{userId}, #{userPw}, #{userNm}, #{email})
+        VALUES (#{userNo}, #{userId}, #{userPw}, #{userNm}, #{email})
     </insert>
     <update id="update">
         UPDATE MEMBER
