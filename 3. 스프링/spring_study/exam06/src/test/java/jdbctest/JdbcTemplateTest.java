@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -59,9 +60,7 @@ public class JdbcTemplateTest {
     @DisplayName("INSERT 후 시퀀스 번호 추출")
     void insertTest2() {
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        int affectedRows = jdbcTemplate.update(new PreparedStatementCreator() {
-            @Override
-            public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+        int affectedRows = jdbcTemplate.update(con -> {
                 String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL) VALUES (SEQ_MEMBER.nextval, ?, ?, ?, ?)";
                 PreparedStatement pstmt = con.prepareStatement(sql, new String[] {"USER_NO"});
 
@@ -71,7 +70,7 @@ public class JdbcTemplateTest {
                 pstmt.setString(4, "user199@test.org");
 
                 return pstmt;
-            }
+
         }, keyHolder);
 
         long userNo = keyHolder.getKey().longValue();
@@ -89,7 +88,29 @@ public class JdbcTemplateTest {
             System.out.println(member);
         }
     }
+    
+    @Test
+    @DisplayName("단일 조회 테스트")
+    void selectTest2() {
+        String userId = "_USER99";
+        String sql = "SELECT * FROM MEMBER WHERE USER_ID = ?";
 
+        try {
+            Member member = jdbcTemplate.queryForObject(sql, this::mapper, userId);
+            System.out.println(member);
+        } catch (DataAccessException e) {
+            System.out.println("조회된 데이터 없음");
+        }
+    }
+    
+    @Test
+    @DisplayName("통계 데이터 조회")
+    void selectTest3() {
+        String sql = "SELECT COUNT(*) FROM MEMBER";
+        long total = jdbcTemplate.queryForObject(sql, long.class);
+        System.out.println(total);
+    }
+    
     private Member mapper(ResultSet rs, int i) throws SQLException {
         return Member.builder()
                 .userNo(rs.getLong("USER_NO"))
