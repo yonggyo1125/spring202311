@@ -34,10 +34,10 @@ public class MemberMapperTest {
     @DisplayName("회원 추가 테스트")
     void memberInsertTest() {
          Member member = Member.builder()
-                 .userId("USER201")
+                 .userId("USER202")
                  .userPw("123456")
-                 .userNm("사용자201")
-                 .email("user201@test.org")
+                 .userNm("사용자202")
+                 .email("user202@test.org")
                  .build();
 
          int affectedRow = mapper.register(member);

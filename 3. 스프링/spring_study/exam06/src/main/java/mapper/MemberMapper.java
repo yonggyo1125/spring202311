@@ -13,4 +13,8 @@ public interface MemberMapper {
 
     //@Insert("INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM) VALUES (SEQ_MEMBER.nextval, #{userId}, #{userPw}, #{userNm})")
     int register(Member member);
+
+    int update(Member member);
+
+    int delete(String userId);
 }
