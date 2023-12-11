@@ -1,13 +1,15 @@
 package exam02;
 
 public class Outer {
-    void method() {
-        Calculator cal = new Calculator() {
+    Calculator method(int num3) {
+       return new Calculator() { // 익명 내부 클래스
             public int add(int num1, int num2) {
-                return num1 + num2;
+                //num3 = 40;
+                return num1 + num2 + num3;
             }
         };
     }
+
     /*
     void method() {
         class Inner {
