@@ -1,14 +1,8 @@
 package exam03;
 
 public class Juicier {
-    /*
-    public static void make(FruitBox<Apple> appleBox) {
 
+    public static void make(FruitBox<?> fruitBox) {
+        System.out.println(fruitBox.getItems());
     }
-
-    public static void make(FruitBox<Pear> pearBox) {
-
-    }
-
-     */
 }
