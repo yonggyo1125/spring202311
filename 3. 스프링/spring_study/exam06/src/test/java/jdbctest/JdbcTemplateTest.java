@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes= AppCtx.class)
 public class JdbcTemplateTest {
@@ -19,6 +22,11 @@ public class JdbcTemplateTest {
     @Test
     @DisplayName("DataSource를 통한 DB 연결 테스트")
     void connectionTest() {
-        
+        try (Connection conn = dataSource.getConnection()) {
+            System.out.println(conn);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
