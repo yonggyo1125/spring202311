@@ -6,4 +6,8 @@
     <select id="getMembers" resultType="models.member.Member">
         SELECT * FROM MEMBER
     </select>
+    <insert id="register">
+        INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL)
+        VALUES (SEQ_MEMBER.nextval, #{userId}, #{userPw}, #{userNm}, #{email})
+    </insert>
 </mapper>
