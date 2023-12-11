@@ -59,7 +59,10 @@ public class JdbcTemplateTest {
         int affectedRows = jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                return null;
+                String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL) VALUES (SEQ_MEMBER.nextval, ?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql, new String[] {"USER_NO"});
+
+                return pstmt;
             }
         });
     }
