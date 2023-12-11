@@ -55,23 +55,22 @@ public class JdbcTemplateTest {
     @DisplayName("목록 출력 테스트")
     void selectTest() {
         String sql = "SELECT * FROM MEMBER";
-        List<Member> members = jdbcTemplate.query(sql, new RowMapper<Member>() {
-            @Override
-            public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-                return Member.builder()
-                        .userNo(rs.getLong("USER_NO"))
-                        .userId(rs.getString("USER_ID"))
-                        .userPw(rs.getString("USER_PW"))
-                        .userNm(rs.getString("USER_NM"))
-                        .email(rs.getString("EMAIL"))
-                        .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
-                        .build();
-            }
-        });
+        List<Member> members = jdbcTemplate.query(sql, (rs, i) -> );
 
         for (Member member : members) {
             System.out.println(member);
         }
+    }
+
+    private Member mapper(ResultSet rs, int i) throws SQLException {
+        return Member.builder()
+                .userNo(rs.getLong("USER_NO"))
+                .userId(rs.getString("USER_ID"))
+                .userPw(rs.getString("USER_PW"))
+                .userNm(rs.getString("USER_NM"))
+                .email(rs.getString("EMAIL"))
+                .regDt(rs.getTimestamp("REG_DT").toLocalDateTime())
+                .build();
     }
 }
