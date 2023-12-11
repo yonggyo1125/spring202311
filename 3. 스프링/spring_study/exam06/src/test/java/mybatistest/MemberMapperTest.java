@@ -50,8 +50,8 @@ public class MemberMapperTest {
     void memberUpdateTest() {
         Member member = Member.builder()
                 .userId("USER99")
-                .userPw("(수정)123456")
-                .userNm("(수정)사용자99")
+                //.userPw("(수정)123456")
+                //.userNm("(수정)사용자99")
                 .email("(수정)user99@test.org")
                 .build();
 
