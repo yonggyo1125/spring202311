@@ -29,4 +29,17 @@ public class MemberMapperTest {
 
         System.out.println(mapper.getClass().getName());
     }
+
+    @Test
+    @DisplayName("회원 추가 테스트")
+    void memberInsertTest() {
+         Member member = Member.builder()
+                 .userId("USER200")
+                 .userPw("123456")
+                 .userNm("사용자200")
+                 .build();
+
+         int affectedRow = mapper.register(member);
+         System.out.println(affectedRow);
+    }
 }
