@@ -56,7 +56,7 @@ public class JdbcTemplateTest {
     void selectTest() {
         String sql = "SELECT * FROM MEMBER";
 
-        List<Member> members = jdbcTemplate.query(sql, (rs, i) -> );
+        List<Member> members = jdbcTemplate.query(sql, this::mapper);
 
         for (Member member : members) {
             System.out.println(member);
