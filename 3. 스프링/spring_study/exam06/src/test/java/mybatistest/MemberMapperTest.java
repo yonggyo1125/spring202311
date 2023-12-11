@@ -22,9 +22,14 @@ public class MemberMapperTest {
     @Test
     @DisplayName("회원 목록 조회 테스트")
     void memberListTest() {
-        List<Member> members = mapper.getMembers();
-        for (Member member : members) {
-            System.out.println(member);
+        Member member = Member.builder()
+                //.userId("%USER%")
+                .userNm("%사용자%")
+                .build();
+        List<Member> members = mapper.getMembers(member);
+
+        for (Member m : members) {
+            System.out.println(m);
         }
 
         System.out.println(mapper.getClass().getName());
@@ -50,9 +55,9 @@ public class MemberMapperTest {
     void memberUpdateTest() {
         Member member = Member.builder()
                 .userId("USER99")
-                //.userPw("(수정)123456")
+                .userPw("(수정)123456")
                 //.userNm("(수정)사용자99")
-                .email("(수정)user99@test.org")
+                //.email("(수정)user99@test.org")
                 .build();
 
         int affectedRows = mapper.update(member);
