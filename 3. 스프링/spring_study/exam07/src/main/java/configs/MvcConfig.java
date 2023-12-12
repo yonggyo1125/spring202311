@@ -35,9 +35,12 @@ public class MvcConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/view/");
+        templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setCacheable(false);
+        // true -> 최초 로딩시 번역, 다음 요청시에는 기존 파일을 그대로 사용 (실 사용중 서버)
+        // false -> 매번 요청시마다 다시 번역 (개발 중)
+
         return templateResolver;
     }
 
