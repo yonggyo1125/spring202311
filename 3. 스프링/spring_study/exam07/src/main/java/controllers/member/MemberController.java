@@ -27,7 +27,9 @@ public class MemberController {
     }
 
     @PostMapping("/member/login")
-    public String loginPs() {
+    public String loginPs(RequestLogin form) {
+
+        System.out.println(form);
 
         return "member/login";
     }
