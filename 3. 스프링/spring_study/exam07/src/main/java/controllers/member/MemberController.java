@@ -14,8 +14,21 @@ public class MemberController {
     }
 
     @PostMapping("/member/join")
-    public String joinPs() {
+    public String joinPs(RequestJoin form) {
+        System.out.println(form);
 
         return "member/join";
+    }
+
+    @GetMapping("/member/login")
+    public String login() {
+
+        return "member/login";
+    }
+
+    @PostMapping("/member/login")
+    public String loginPs() {
+
+        return "member/login";
     }
 }
