@@ -10,10 +10,12 @@ public class MemberController {
     @GetMapping("/member/join")
     public String join() {
 
+        return "member/join";
     }
 
     @PostMapping("/member/join")
     public String joinPs() {
 
+        return "member/join";
     }
 }
