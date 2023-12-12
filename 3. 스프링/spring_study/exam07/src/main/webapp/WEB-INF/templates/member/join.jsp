@@ -30,4 +30,9 @@
             <input type="text" name="email">
         </dd>
     </dl>
+    <div>
+        <input type="checkbox" name="agree" value="true" id="agree">
+        <label for="agree">회원가입 약관에 동의합니다.</label>
+    </div>
+    <button type="submit">가입하기</button>
 </form>
