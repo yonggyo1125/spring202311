@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HelloController {
 
     @GetMapping("/hello")
-    public String hello(@RequestParam("name") String nm, Model model) {
+    public String hello(@RequestParam(name="name", defaultValue="기본값") String nm, Model model) {
 
         model.addAttribute("name", nm);
 
