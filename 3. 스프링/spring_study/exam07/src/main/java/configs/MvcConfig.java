@@ -49,8 +49,8 @@ public class MvcConfig implements WebMvcConfigurer {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
-        templateEngine.addDialect(new Java8TimeDialect());
-        templateEngine.addDialect(new LayoutDialect());
+        templateEngine.addDialect(new Java8TimeDialect()); // Date Time API(java.time 패키지) - #temporals
+        templateEngine.addDialect(new LayoutDialect()); // 레이아웃 기능 추가
         return templateEngine;
     }
 
