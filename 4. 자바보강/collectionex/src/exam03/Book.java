@@ -2,7 +2,7 @@ package exam03;
 
 import java.util.Objects;
 
-public class Book implements Comparable<String> {
+public class Book implements Comparable<Book> {
     private String title;
     private String author;
     private String publisher;
@@ -35,10 +35,10 @@ public class Book implements Comparable<String> {
         return Objects.hash(title, author, publisher);
     }
 
-    @Override
-    public int compareTo(String o) {
-        // 음수 -> 앞으로 배치, 0 - X, 양수 -> 뒤로 배치
 
-        return title.hashCode() - o.hashCode(); // 오름차순 정렬
+    @Override
+    public int compareTo(Book o) {
+
+        return title.hashCode() - o.title.hashCode();
     }
 }
