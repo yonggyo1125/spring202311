@@ -8,11 +8,11 @@
         <h1>회원가입</h1>
         <dl>
             <dt>아이디</dt>
-            <dd>user100</dd>
+            <dd th:text="${member.userId}">user100</dd>
         </dl>
         <dl>
             <dt>회원명</dt>
-            <dd>이이름</dd>
+            <dd th:text="${member.userNm}">이이름</dd>
         </dl>
     </body>
 </html>
