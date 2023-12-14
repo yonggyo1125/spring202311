@@ -1,5 +1,6 @@
 package configs;
 
+import commons.Utils;
 import nz.net.ultraq.thymeleaf.layoutdialect.LayoutDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -31,6 +32,12 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**") // 모든 경로
                 .addResourceLocations("classpath:/static/");
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/")
+                .setViewName("main/index");
     }
 
     @Bean
@@ -77,5 +84,10 @@ public class MvcConfig implements WebMvcConfigurer {
         ms.setBasenames("messages.commons");
 
         return ms;
+    }
+
+    @Bean
+    public Utils utils() {
+        return new Utils();
     }
 }
