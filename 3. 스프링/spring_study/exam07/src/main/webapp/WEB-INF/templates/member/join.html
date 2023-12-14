@@ -6,18 +6,18 @@
     </head>
     <body>
         <th:block th:object="${member}">
-            <h1>회원가입</h1>
+            <h1 th:text="${pageTitle}"></h1>
             <a th:href="@{/member/login(userId=*{userId}, userNm=*{userNm})}">로그인</a>
 
            <a th:href="@{/member/info/{id}(id=*{userId})}">회원정보</a>
 
             <dl>
                 <dt th:text="#{아이디}"></dt>
-                <dd th:text="*{userId}">user100</dd>
+                <dd>[[*{userId}]]</dd>
             </dl>
             <dl>
                 <dt th:text="#{회원명}"></dt>
-                <dd th:text="*{userNm}">이이름</dd>
+                <dd th:utext="*{userNm}">이이름</dd>
             </dl>
         </th:block>
     </body>
