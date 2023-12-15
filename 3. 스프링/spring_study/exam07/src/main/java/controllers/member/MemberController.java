@@ -3,10 +3,7 @@ package controllers.member;
 import models.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,9 +15,9 @@ import java.util.List;
 public class MemberController {
 
     @GetMapping("/join") // /member/join
-    public String join(Model model) {
+    public String join(@ModelAttribute RequestJoin form, Model model) {
 
-
+        //model.addAttribute("requestJoin", new RequestJoin());
         model.addAttribute("pageTitle", "회원가입");
 
         return "member/join";
@@ -30,8 +27,8 @@ public class MemberController {
     @PostMapping("/join") // /member/join
     public String joinPs(RequestJoin form, Model model) {
         //System.out.println(form);
-
-        model.addAttribute("requestJoin", form);
+        // 커맨객체 RequestJoin  -> requestJoin 이름으로 속성이 추가 -> 템플릿 내에서 바로 접근 가능
+        
 
         return "member/join";
     }
