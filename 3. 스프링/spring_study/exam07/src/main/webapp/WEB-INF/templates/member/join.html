@@ -33,6 +33,35 @@
             </dd>
         </dl>
 
+        <dl>
+            <dt th:text="#{이메일}"></dt>
+            <dd>
+                <input type="text" name="email">
+            </dd>
+        </dl>
+
+        <dl>
+            <dt th:text="#{취미}"></dt>
+            <dd>
+                <input type="checkbox" name="hobby" value="자바" id="hobby1">
+                <label for="hobby1">자바</label>
+
+                <input type="checkbox" name="hobby" value="오라클" id="hobby2">
+                <label for="hobby2">오라클</label>
+
+                <input type="checkbox" name="hobby" value="JSP" id="hobby3">
+                <label for="hobby3">JSP</label>
+
+                <input type="checkbox" name="hobby" value="스프링" id="hobby4">
+                <label for="hobby4">스프링</label>
+            </dd>
+        </dl>
+
+        <div>
+            <input type="checkbox" name="agree" value="true" id="agree">
+            <label for="agree" th:text="#{회원가입_약관에_동의합니다.}"></label>
+        </div>
+
         <button type="submit" th:text="#{가입하기}"></button>
     </form>
 </main>
