@@ -44,17 +44,10 @@
         <dl>
             <dt th:text="#{취미}"></dt>
             <dd>
-                <input type="checkbox" name="hobby" value="자바" id="hobby1" th:field="*{hobby}">
-                <label for="hobby1">자바</label>
-
-                <input type="checkbox" name="hobby" value="오라클" id="hobby2" th:field="*{hobby}">
-                <label for="hobby2">오라클</label>
-
-                <input type="checkbox" name="hobby" value="JSP" id="hobby3" th:field="*{hobby}">
-                <label for="hobby3">JSP</label>
-
-                <input type="checkbox" name="hobby" value="스프링" id="hobby4" th:field="*{hobby}">
-                <label for="hobby4">스프링</label>
+                <th:block th:each="h, status : ${hobbies}">
+                    <input type="checkbox" name="hobby" th:value="${h}" th:id="${'hobby' + status.count}" th:field="*{hobby}">
+                    <label th:for="${'hobby' + status.count}" th:text="${h}"></label>
+                </th:block>
             </dd>
         </dl>
 

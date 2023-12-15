@@ -14,6 +14,11 @@ import java.util.List;
 @RequestMapping("/member")
 public class MemberController {
 
+    @ModelAttribute("hobbies")
+    public List<String> hobbies() {
+        return Arrays.asList("자바", "오라클", "JSP", "스프링");
+    }
+
     @GetMapping("/join") // /member/join
     public String join(@ModelAttribute RequestJoin form, Model model) {
 
