@@ -57,6 +57,15 @@
             </dd>
         </dl>
 
+        <dl>
+            <dt th:text="#{주소}"></dt>
+            <dd>
+                <input type="text" name="addr.zipcode">
+                <input type="text" name="addr.address">
+                <input type="text" name="addr.addressSub">
+            </dd>
+        </dl>
+
         <div>
             <input type="checkbox" name="agree" value="true" id="agree">
             <label for="agree" th:text="#{회원가입_약관에_동의합니다.}"></label>
