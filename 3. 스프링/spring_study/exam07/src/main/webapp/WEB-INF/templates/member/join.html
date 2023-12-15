@@ -4,7 +4,37 @@
     layout:decorate="~{layouts/common}">
 
 <main layout:fragment="content">
-    <h1>회원가입</h1>
+    <h1 th:text="#{회원가입}"></h1>
+    <form method="post" th:action="@{/member/join}">
+        <dl>
+            <dt th:text="#{아이디}"></dt>
+            <dd>
+                <input type="text" name="userId">
+            </dd>
+        </dl>
+
+        <dl>
+            <dt th:text="#{비밀번호}"></dt>
+            <dd>
+                <input type="password" name="userPw">
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{비밀번호_확인}"></dt>
+            <dd>
+                <input type="password" name="confirmPw">
+            </dd>
+        </dl>
+
+        <dl>
+            <dt th:text="#{회원명}"></dt>
+            <dd>
+                <input type="text" name="userNm">
+            </dd>
+        </dl>
+
+        <button type="submit" th:text="#{가입하기}"></button>
+    </form>
 </main>
 
 </html>
