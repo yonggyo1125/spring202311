@@ -42,6 +42,10 @@ public class MemberController {
 
         joinValidator.validate(form, errors);
 
+        if (errors.hasErrors()) { // 검증 실패시
+
+            return "member/join";
+        }
 
         // 커맨객체 RequestJoin  -> requestJoin 이름으로 속성이 추가 -> 템플릿 내에서 바로 접근 가능
         // response.sendRedirect(request.getContextPath() + "/member/login")
