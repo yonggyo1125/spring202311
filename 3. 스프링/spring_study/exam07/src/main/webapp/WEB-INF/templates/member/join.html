@@ -45,7 +45,8 @@
             <dt th:text="#{취미}"></dt>
             <dd>
                 <th:block th:each="h, status : ${hobbies}">
-                    <input type="checkbox" name="hobby" th:value="${h}" th:id="${'hobby' + status.count}" th:field="*{hobby}">
+                    <input type="checkbox" name="hobby" th:value="${h}"
+                           th:id="${'hobby' + status.count}" th:field="*{hobby}">
                     <label th:for="${'hobby' + status.count}" th:text="${h}"></label>
                 </th:block>
             </dd>
