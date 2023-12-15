@@ -1,6 +1,7 @@
 package controllers.member;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import models.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class MemberController {
 
 
     @PostMapping("/join") // /member/join
-    public String joinPs(RequestJoin form, Errors errors, Model model) {
+    public String joinPs(@Valid RequestJoin form, Errors errors, Model model) {
 
 
         joinValidator.validate(form, errors);

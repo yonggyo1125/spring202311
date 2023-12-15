@@ -29,8 +29,6 @@ public class JoinValidator implements Validator {
          */
 
         RequestJoin form = (RequestJoin)target;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPw", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPw", "Required");
+
     }
 }

@@ -1,17 +1,24 @@
 package controllers.member;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 public class RequestJoin {
+    @NotBlank
     private String userId;
+
+    @NotBlank
     private String userPw;
+
+    @NotBlank
     private String confirmPw;
+
+    @NotBlank
     private String userNm;
     private String email;
-    private List<String> hobby; // String[] hobby; Set<String> hobby;
-    private Address addr; // 중첩된 커맨드 객체 addr.address
+
     private boolean agree;
 }
