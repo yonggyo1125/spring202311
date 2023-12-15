@@ -1,8 +1,10 @@
 package controllers.member;
 
+import jakarta.servlet.http.HttpServletRequest;
 import models.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -31,13 +33,14 @@ public class MemberController {
 
     @PostMapping("/join") // /member/join
     public String joinPs(RequestJoin form, Model model) {
-        //System.out.println(form);
+
+
+
         // 커맨객체 RequestJoin  -> requestJoin 이름으로 속성이 추가 -> 템플릿 내에서 바로 접근 가능
-        
-
         // response.sendRedirect(request.getContextPath() + "/member/login")
-
+        // Location: 주소
         return "redirect:/member/login";
+
     }
 
 
