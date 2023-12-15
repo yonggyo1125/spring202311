@@ -22,14 +22,21 @@ public class JoinValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         /**
-         * 1. 필수 항목 검증(userId, userPw, confirmPw, userNm, agree)
+         * 1. 필수 항목 검증(userId, userPw, confirmPw, userNm, agree) - O
          * 2. 중복 아이디 여부 체크
-         * 3. 아이디 최소 자리수(6자리 이상) 체크
-         * 4. 비밀번호 최소 자리수(8자리 이상) 체크
-         * 5. 이메일 값은 필수는 아니지만 값이 있으면 형식 체크
+         * 3. 아이디 최소 자리수(6자리 이상) 체크 - O
+         * 4. 비밀번호 최소 자리수(8자리 이상) 체크 - O
+         * 5. 이메일 값은 필수는 아니지만 값이 있으면 형식 체크 - O
+         * 6. 비밀번호, 비밀번호 확인 일치여부
          */
 
         RequestJoin form = (RequestJoin)target;
+        String userPw = form.getUserPw();
+        String confirmPw = form.getConfirmPw();
 
+        if (StringUtils.hasText(userPw) && StringUtils.hasText(confirmPw)
+                && !userPw.equals(confirmPw)) {
+            errors.rejectValue("confirmPw", "Mismatch");
+        }
     }
 }
