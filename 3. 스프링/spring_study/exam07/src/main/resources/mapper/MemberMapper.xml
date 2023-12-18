@@ -13,6 +13,6 @@
     </select>
 
     <select id="get" resultType="models.member.Member">
-
+        SELECT * FROM MEMBER WHERRE USER_ID=#{userId}
     </select>
 </mapper>
