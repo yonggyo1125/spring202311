@@ -10,7 +10,6 @@ public class MemberDao {
 
     private final MemberMapper mapper;
 
-
     public boolean register(Member member) {
 
         int affectedRows = mapper.register(member);
