@@ -3,6 +3,7 @@ package controllers.member;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import models.member.JoinService;
 import models.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MemberController {
 
     private final JoinValidator joinValidator;
+    private final JoinService joinService;
 
     @ModelAttribute("hobbies")
     public List<String> hobbies() {
@@ -45,9 +47,11 @@ public class MemberController {
         joinValidator.validate(form, errors);
 
         if (errors.hasErrors()) { // 검증 실패시
-
             return "member/join";
         }
+
+        // 회원 가입 처리
+        joinService.join(form);
 
         // 커맨객체 RequestJoin  -> requestJoin 이름으로 속성이 추가 -> 템플릿 내에서 바로 접근 가능
         // response.sendRedirect(request.getContextPath() + "/member/login")
