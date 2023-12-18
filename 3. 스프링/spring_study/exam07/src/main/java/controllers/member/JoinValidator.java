@@ -53,5 +53,10 @@ public class JoinValidator implements Validator {
                 && !userPw.equals(confirmPw)) {
             errors.rejectValue("confirmPw", "Mismatch");
         }
+
+        boolean result = false;
+        if (!result) {
+            errors.reject("ErrorTest", "공통 에러....");
+        }
     }
 }
