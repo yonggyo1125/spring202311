@@ -41,7 +41,7 @@ public class MemberController {
     public String joinPs(@Valid RequestJoin form, Errors errors, Model model) {
 
 
-        joinValidator.validate(form, errors);
+        //joinValidator.validate(form, errors);
 
         if (errors.hasErrors()) { // 검증 실패시
 

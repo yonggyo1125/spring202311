@@ -10,6 +10,7 @@ import org.springframework.validation.Validator;
 public class JoinValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) { // 검증 커맨드 객체를 제한
+
         return clazz.isAssignableFrom(RequestJoin.class);
     }
 
@@ -21,6 +22,8 @@ public class JoinValidator implements Validator {
      */
     @Override
     public void validate(Object target, Errors errors) {
+
+
         /**
          * 1. 필수 항목 검증(userId, userPw, confirmPw, userNm, agree) - O
          * 2. 중복 아이디 여부 체크
