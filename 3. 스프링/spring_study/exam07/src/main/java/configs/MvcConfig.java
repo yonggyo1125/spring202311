@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.*;
@@ -18,11 +19,12 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
+@Import(DbConfig.class)
 public class MvcConfig implements WebMvcConfigurer {
 
     @Autowired
     private ApplicationContext applicationContext;
-
+    /*
     @Autowired
     private JoinValidator joinValidator;
 
@@ -30,6 +32,7 @@ public class MvcConfig implements WebMvcConfigurer {
     public Validator getValidator() {
         return joinValidator;
     }
+    */
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
