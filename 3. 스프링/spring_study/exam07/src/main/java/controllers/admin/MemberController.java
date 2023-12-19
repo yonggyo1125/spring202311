@@ -23,8 +23,8 @@ public class MemberController {
     @GetMapping  // /admin/member
     public String index(@ModelAttribute MemberSearch search, Errors errors, Model model) {
 
-        //List<Member> members = memberDao.getList(search);
-        //model.addAttribute("members", members);
+        List<Member> members = memberDao.getList(search);
+        model.addAttribute("members", members);
 
         return "admin/member/list";
     }
