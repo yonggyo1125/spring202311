@@ -22,7 +22,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
-import org.thymeleaf.spring6.expression.Mvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 import java.sql.Connection;
 
@@ -42,7 +46,6 @@ public class JoinServiceTest {
     private MockMvc mockmvc;
 
 
-
     @Autowired
     private DataSource dataSrouce;
 
@@ -57,8 +60,6 @@ public class JoinServiceTest {
     void setup() {
         mockmvc = MockMvcBuilders.webAppContextSetup(ctx).build();
     }
-
-
 
     @Test
     @DisplayName("데이터베이스 연결 테스트")
@@ -98,7 +99,9 @@ public class JoinServiceTest {
 
     @Test
     @DisplayName("회원가입 통합 테스트")
-    void joinTest2() {
-
+    void joinTest2() throws Exception {
+        mockmvc.perform(post("/member/join")
+                .param("userId", "user01")
+        ).andDo(print());
     }
 }
