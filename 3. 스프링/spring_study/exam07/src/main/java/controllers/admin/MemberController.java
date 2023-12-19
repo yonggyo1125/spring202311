@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -28,4 +29,13 @@ public class MemberController {
         return "admin/member/list";
     }
 
+    // /admin/member/회원아이디
+
+    @GetMapping("/{id}")
+    public String info(@PathVariable("id") String userId) {
+
+        System.out.println(userId);
+
+        return "admin/member/info";
+    }
 }
