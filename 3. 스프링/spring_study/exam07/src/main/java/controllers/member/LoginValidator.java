@@ -43,10 +43,5 @@ public class LoginValidator implements Validator {
             !BCrypt.checkpw(userPw, member.getUserPw())) {
             errors.reject("Login.auth.fail");
         }
-
-
-
-
-
     }
 }

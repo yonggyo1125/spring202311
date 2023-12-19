@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import models.member.JoinService;
+import models.member.LoginService;
 import models.member.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class MemberController {
 
     private final JoinValidator joinValidator;
     private final JoinService joinService;
+    private final LoginValidator loginValidator;
+    private final LoginService loginService;
+
 
     @ModelAttribute("hobbies")
     public List<String> hobbies() {
@@ -70,9 +74,14 @@ public class MemberController {
     @PostMapping("/login") // /member/login
     public String loginPs(@Valid RequestLogin form, Errors errors) {
 
+        loginValidator.validate(form, errors);
+
         if (errors.hasErrors()) {
             return "member/login";
         }
+
+        // 로그인 처리
+        loginService.login(form);
 
         return "redirect:/"; // 로그인 성공시 메인페이지 / 이동
     }
