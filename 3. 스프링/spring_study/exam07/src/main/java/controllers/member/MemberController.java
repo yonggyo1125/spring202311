@@ -68,11 +68,13 @@ public class MemberController {
     }
 
     @PostMapping("/login") // /member/login
-    public String loginPs(RequestLogin form) {
+    public String loginPs(@Valid RequestLogin form, Errors errors) {
 
-        System.out.println(form);
+        if (errors.hasErrors()) {
+            return "member/login";
+        }
 
-        return "member/login";
+        return "redirect:/"; // 로그인 성공시 메인페이지 / 이동
     }
 
     @GetMapping("/list") // /member/list
