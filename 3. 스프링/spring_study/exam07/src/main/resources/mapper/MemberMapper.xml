@@ -23,7 +23,11 @@
             <if test="sdate != null">
                 REG_DT >= #{sdate}
             </if>
+            <if test="edate != null">
+                REG_DT <= #{edate}
+            </if>
         </where>
+        ORDER BY REG_DT DESC
         ]]>
     </select>
 </mapper>
