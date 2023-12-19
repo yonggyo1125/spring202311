@@ -51,6 +51,9 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
                 .setViewName("main/index");
+
+        registry.addViewController("/mypage/**")
+                .setViewName("mypage/index");
     }
 
     @Bean
