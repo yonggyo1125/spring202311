@@ -17,7 +17,9 @@ public class MemberOnlyInterceptor implements HandlerInterceptor {
             return true;
         }
 
+
         // 비회원 -> 로그인 페이지 이동
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         String url = request.getContextPath() + "/member/login";
         response.sendRedirect(url);
 
