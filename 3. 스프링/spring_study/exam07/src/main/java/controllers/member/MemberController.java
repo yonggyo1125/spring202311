@@ -62,7 +62,7 @@ public class MemberController {
 
 
     @GetMapping("/login") // /member/login
-    public String login() {
+    public String login(@ModelAttribute RequestLogin form) {
 
         return "member/login";
     }
