@@ -47,10 +47,15 @@ public class MemberController {
 
         return "admin/member/info";
     }
+    /*
+    @ExceptionHandler(Exception.class)
+    public String errorHandler(Exception e, Model model) {
 
-    @ExceptionHandler(RuntimeException.class)
-    public String errorHandler() {
+        e.printStackTrace();
+
+        model.addAttribute("message", e.getMessage());
 
         return "error/common";
     }
+     */
 }
