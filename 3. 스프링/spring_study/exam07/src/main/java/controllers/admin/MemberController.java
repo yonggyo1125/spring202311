@@ -26,6 +26,8 @@ public class MemberController {
         List<Member> members = memberDao.getList(search);
         model.addAttribute("members", members);
 
+        members.forEach(System.out::println);
+
         return "admin/member/list";
     }
 
@@ -35,6 +37,16 @@ public class MemberController {
     public String info(@PathVariable("id") String userId) {
 
         System.out.println(userId);
+
+        return "admin/member/info";
+    }
+
+    @GetMapping("/test")
+    public String errorTest() {
+        boolean result = true;
+        if (result) {
+            throw new RuntimeException("예외 발생!!!!");
+        }
 
         return "admin/member/info";
     }
