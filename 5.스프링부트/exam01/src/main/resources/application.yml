@@ -6,6 +6,12 @@ spring:
   #profiles:
   #  active: dev
 
+  # 파일 업로드 설정
+  servlet:
+    multipart:
+      maxFileSize: 20MB
+      maxRequestSize: 60MB
+
   # 데이터베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
