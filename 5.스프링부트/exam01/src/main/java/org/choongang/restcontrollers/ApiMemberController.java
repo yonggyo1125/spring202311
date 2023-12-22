@@ -2,6 +2,7 @@ package org.choongang.restcontrollers;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.choongang.commons.BadRequestException;
 import org.choongang.commons.JSONData;
 import org.choongang.entities.Member;
 import org.springframework.http.HttpStatus;
@@ -31,7 +32,7 @@ public class ApiMemberController {
 
             String message = messages.stream().collect(Collectors.joining(","));
 
-            throw new RuntimeException(message);
+            throw new BadRequestException(message);
         }
 
         // 응답 코드 - 201, Body - 없음
