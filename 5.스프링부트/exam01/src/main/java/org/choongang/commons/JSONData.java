@@ -16,6 +16,4 @@ public class JSONData<T> {
     @NonNull
     private T data; // 성공시 Body 데이터
     private String message; // 실패시 메세지
-
-
 }

@@ -94,11 +94,12 @@ public class ApiMemberController {
         System.out.println("처리....");
     }
 
+    /*
     @ExceptionHandler(Exception.class)
     public ResponseEntity errorHandler(Exception e) {
 
 
        // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         return ResponseEntity.badRequest().body(e.getMessage());
-    }
+    }*/
 }
