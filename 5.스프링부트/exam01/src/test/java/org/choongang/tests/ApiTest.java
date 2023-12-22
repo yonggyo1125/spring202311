@@ -1,7 +1,9 @@
 package org.choongang.tests;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.choongang.entities.Member;
 import org.choongang.restcontrollers.RequestJoin;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,8 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -60,9 +64,31 @@ public class ApiTest {
     @Test
     @DisplayName("JSON 문자열 -> Member 객체로 변환")
     void infoTest() throws Exception {
-        mockMvc.perform(get("/api/member"))
-                .andDo(print())
-                .andReturn().getResponse().getContentAsString(Charset.forName("UTF-8"));
 
+        String body = mockMvc.perform(get("/api/member"))
+                    .andDo(print())
+                    .andReturn().getResponse()
+                    .getContentAsString(Charset.forName("UTF-8"));
+
+        ObjectMapper om = new ObjectMapper();
+        om.registerModule(new JavaTimeModule());
+
+        Member member = om.readValue(body, Member.class);
+        System.out.println(member);
+    }
+
+    @Test
+    void listTest() throws Exception {
+        String body = mockMvc.perform(get("/api/member/list"))
+                    .andDo(print())
+                    .andReturn()
+                    .getResponse()
+                    .getContentAsString(Charset.forName("UTF-8"));
+
+        ObjectMapper om = new ObjectMapper();
+        om.registerModule(new JavaTimeModule());
+
+        List<Member> members = om.readValue(body, new TypeReference<>() {});
+        members.forEach(System.out::println);
     }
 }
