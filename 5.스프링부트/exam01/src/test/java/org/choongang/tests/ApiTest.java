@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,6 +32,7 @@ public class ApiTest {
         RequestJoin form = new RequestJoin();
         form.setUserId("user01");
         form.setUserPw("12345678");
+        form.setConfirmPw("12345678");
         form.setUserNm("사용자01");
         form.setEmail("user01@test.org");
         form.setRegDt(LocalDateTime.now());
@@ -49,6 +51,7 @@ public class ApiTest {
                             .characterEncoding("UTF-8")
                             .content(body)
                 )
-                .andDo(print());
+                .andDo(print())
+                .andExpect(status().isCreated()); // 201
     }
 }

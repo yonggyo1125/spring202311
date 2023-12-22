@@ -51,7 +51,7 @@ public class ApiMemberController {
     }
 
     @GetMapping
-    public JSONData<Member> info() {
+    public Member info() {
         Member member = Member.builder()
                 .userNo(1L)
                 .userPw("12345678")
@@ -65,7 +65,8 @@ public class ApiMemberController {
         //JSONData<Member> data = new JSONData<>();
         //data.setData(member);
 
-        return new JSONData<>(member);
+        //return new JSONData<>(member);
+        return member;
     }
 
     @GetMapping("/list")
