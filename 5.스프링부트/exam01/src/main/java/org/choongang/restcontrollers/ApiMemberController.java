@@ -2,6 +2,7 @@ package org.choongang.restcontrollers;
 
 import org.choongang.entities.Member;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +13,11 @@ import java.util.stream.IntStream;
 @RestController
 @RequestMapping("/api/member")
 public class ApiMemberController {
+
+    @PostMapping
+    public void join() {
+
+    }
 
     @GetMapping
     public Member info() {
