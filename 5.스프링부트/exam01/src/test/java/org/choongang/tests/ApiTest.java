@@ -11,11 +11,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -53,5 +55,14 @@ public class ApiTest {
                 )
                 .andDo(print())
                 .andExpect(status().isCreated()); // 201
+    }
+
+    @Test
+    @DisplayName("JSON 문자열 -> Member 객체로 변환")
+    void infoTest() throws Exception {
+        mockMvc.perform(get("/api/member"))
+                .andDo(print())
+                .andReturn().getResponse().getContentAsString(Charset.forName("UTF-8"));
+
     }
 }
