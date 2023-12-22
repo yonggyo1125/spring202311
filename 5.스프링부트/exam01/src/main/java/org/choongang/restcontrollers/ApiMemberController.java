@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -24,9 +25,12 @@ public class ApiMemberController {
                     .map(FieldError::getDefaultMessage)
                     .toList();
             log.info("에러 : {}", messages.toString());
+
+            String message = messages.stream().collect(Collectors.joining(","));
+
+            throw new RuntimeException(message);
         }
 
-        log.info(form.toString());
     }
 
     @GetMapping
@@ -69,5 +73,12 @@ public class ApiMemberController {
     @GetMapping("/process")
     public void process() {
         System.out.println("처리....");
+    }
+
+    @ExceptionHandler(Exception.class)
+    public String errorHandler(Exception e) {
+
+
+        return e.getMessage();
     }
 }
