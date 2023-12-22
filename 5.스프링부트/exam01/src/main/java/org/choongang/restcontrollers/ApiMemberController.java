@@ -3,6 +3,8 @@ package org.choongang.restcontrollers;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.entities.Member;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,7 @@ import java.util.stream.IntStream;
 public class ApiMemberController {
 
     @PostMapping
-    public void join(@Valid @RequestBody  RequestJoin form, Errors errors) {
+    public ResponseEntity join(@Valid @RequestBody  RequestJoin form, Errors errors) {
         if (errors.hasErrors()) {
             List<String> messages = errors.getFieldErrors()
                     .stream()
@@ -31,6 +33,11 @@ public class ApiMemberController {
             throw new RuntimeException(message);
         }
 
+        // 응답 코드 - 201, Body - 없음
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("CUSTOM_HEADER", "value1")
+                .build();
     }
 
     @GetMapping
@@ -76,9 +83,9 @@ public class ApiMemberController {
     }
 
     @ExceptionHandler(Exception.class)
-    public String errorHandler(Exception e) {
+    public ResponseEntity errorHandler(Exception e) {
 
 
-        return e.getMessage();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
