@@ -1,7 +1,10 @@
 package org.choongang.restcontrollers;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.choongang.entities.Member;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -14,7 +17,15 @@ import java.util.stream.IntStream;
 public class ApiMemberController {
 
     @PostMapping
-    public void join(@RequestBody RequestJoin form) {
+    public void join(@Valid @RequestBody  RequestJoin form, Errors errors) {
+        if (errors.hasErrors()) {
+            List<String> messages = errors.getFieldErrors()
+                    .stream()
+                    .map(FieldError::getDefaultMessage)
+                    .toList();
+            log.info("에러 : {}", messages.toString());
+        }
+
         log.info(form.toString());
     }
 
