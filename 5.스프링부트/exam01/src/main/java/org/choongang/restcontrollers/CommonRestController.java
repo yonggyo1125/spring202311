@@ -25,6 +25,7 @@ public class CommonRestController {
         JSONData<Object> data = new JSONData<>();
         data.setStatus(status);
         data.setMessage(e.getMessage());
+        data.setSuccess(false);
 
         return ResponseEntity.status(status).body(data);
     }
