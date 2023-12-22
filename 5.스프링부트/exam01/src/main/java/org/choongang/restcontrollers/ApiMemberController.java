@@ -1,22 +1,21 @@
 package org.choongang.restcontrollers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.choongang.entities.Member;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.IntStream;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/member")
 public class ApiMemberController {
 
     @PostMapping
-    public void join() {
-
+    public void join(@RequestBody RequestJoin form) {
+        log.info(form.toString());
     }
 
     @GetMapping
