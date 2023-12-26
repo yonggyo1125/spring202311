@@ -16,6 +16,7 @@ public class Member {
     @Id // Primary Key : 기본키
     private Long userNo;
     private String userId;
+
     @JsonIgnore
     private String userPw;
     private String userNm;
