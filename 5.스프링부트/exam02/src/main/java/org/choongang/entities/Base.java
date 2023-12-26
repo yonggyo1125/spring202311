@@ -1,5 +1,6 @@
 package org.choongang.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -16,8 +17,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Base {
     @CreatedDate
+    @Column(updatable = false) // 추가 O, 수정 X
     private LocalDateTime createdAt;
 
     @LastModifiedDate
+    @Column(insertable = false) // 추가 X, 수정 O
     private LocalDateTime modifiedAt;
 }
