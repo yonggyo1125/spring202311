@@ -1,15 +1,16 @@
 package org.choongang.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Table(name="USERS",
+        indexes = @Index(name="idx_member_createdAt", columnList = "createdAt DESC"))
 public class Member {
-    @Id
+    @Id @GeneratedValue
     private Long seq;
     private String email;
     private String name;
