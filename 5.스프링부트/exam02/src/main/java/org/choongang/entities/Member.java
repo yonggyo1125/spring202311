@@ -21,19 +21,20 @@ public class Member extends Base {
     @Id @GeneratedValue
     private Long seq;
 
-    @Column(unique = true, nullable = false)
+    @Column(length=80, unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(length=40, nullable = false)
     private String name;
 
-    @Column(name="userPw", nullable = false)
+    @Column(length=65, name="userPw", nullable = false)
     private String password; // varchar2
     //@Lob
     @Transient
     private String introduction; // CLOB
 
     @Enumerated(EnumType.STRING)
+    @Column(length=10)
     private MemberType type;
     /*
    // @CreationTimestamp // INSERT SQL 실행시

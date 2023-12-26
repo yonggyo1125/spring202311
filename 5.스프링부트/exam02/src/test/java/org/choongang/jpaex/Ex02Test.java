@@ -58,7 +58,8 @@ public class Ex02Test {
         em.persist(member);
         em.flush();
 
-        System.out.println(member);
+        System.out.printf("createdAt=%s, modifiedAt=%s%n",
+                member.getCreatedAt(), member.getModifiedAt());
 
 
         try {
@@ -70,6 +71,7 @@ public class Ex02Test {
         member.setName("(수정)사용자01");
         em.flush();
 
-        System.out.println(member);
+        System.out.printf("createdAt=%s, modifiedAt=%s%n",
+                member.getCreatedAt(), member.getModifiedAt());
     }
 }
