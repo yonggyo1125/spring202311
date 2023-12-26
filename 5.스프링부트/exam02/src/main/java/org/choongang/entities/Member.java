@@ -5,6 +5,9 @@ import lombok.Data;
 import org.choongang.commons.MemberType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,6 +16,7 @@ import java.util.Date;
 @Entity
 @Table(name="USERS",
         indexes = @Index(name="idx_member_createdAt", columnList = "createdAt DESC"))
+@EntityListeners(AuditingEntityListener.class)
 public class Member {
     @Id @GeneratedValue
     private Long seq;
@@ -26,12 +30,16 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private MemberType type;
 
-    @CreationTimestamp // INSERT SQL 실행시
+   // @CreationTimestamp // INSERT SQL 실행시
+    @CreatedDate
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp // UPDATE SQL 실행시
+   // @UpdateTimestamp // UPDATE SQL 실행시
+    @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-    @Temporal(TemporalType.DATE)
-    public Date dt;
+    //@Temporal(TemporalType.DATE) // 날짜
+   // @Temporal(TemporalType.TIME) // 시간
+    //@Temporal(TemporalType.TIMESTAMP) // 날짜 + 시간
+    //public Date dt;
 }
