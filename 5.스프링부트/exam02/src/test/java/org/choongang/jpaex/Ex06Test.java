@@ -60,7 +60,7 @@ public class Ex06Test {
         Member member = data.getMember();
         String email = member.getEmail(); // 2차 쿼리 수행
         System.out.println(email);
-        //System.out.println(member);
+        System.out.println(member);
     }
 
     @Test
