@@ -2,6 +2,7 @@ package org.choongang.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 import org.choongang.commons.MemberType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -33,6 +34,7 @@ public class Member extends Base {
     @Column(length=10)
     private MemberType type;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "member", fetch=FetchType.EAGER)
     private List<BoardData> items = new ArrayList<>();
 

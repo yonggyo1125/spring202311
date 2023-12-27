@@ -63,7 +63,7 @@ public class Ex06Test {
     void test2() {
         Member member = memberRepository.findByEmail("user01@test.org");
         List<BoardData> items = member.getItems();
-        System.out.println(items);
-        items.forEach(System.out::println);
+
+        items.forEach(System.out::println); // BoardData -> toString()
     }
 }
