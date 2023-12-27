@@ -16,4 +16,8 @@ public class BoardData extends Base {
     @Lob
     @Column(nullable = false)
     public String content;
+
+    @ManyToOne
+    @JoinColumn(name="userNo")
+    private Member member;
 }
