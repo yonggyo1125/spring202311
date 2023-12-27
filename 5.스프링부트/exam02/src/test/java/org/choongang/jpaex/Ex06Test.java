@@ -5,12 +5,13 @@ import org.choongang.entities.Member;
 import org.choongang.repositories.BoardDataRepository;
 import org.choongang.repositories.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-@TestPropertySource(properties = "spring.profiles.active=test")
+//@TestPropertySource(properties = "spring.profiles.active=test")
 public class Ex06Test {
 
     @Autowired
@@ -35,5 +36,10 @@ public class Ex06Test {
         data.setMember(member);
 
         boardDataRepository.saveAndFlush(data);
+    }
+
+    @Test
+    void test1() {
+
     }
 }
