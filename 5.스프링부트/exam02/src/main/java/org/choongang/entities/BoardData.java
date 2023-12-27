@@ -20,10 +20,10 @@ public class BoardData extends Base {
     @Column(nullable = false)
     public String content;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="userNo")
     private Member member;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.LAZY)
     private List<HashTag> tags = new ArrayList<>();
 }

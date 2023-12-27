@@ -17,6 +17,6 @@ public class HashTag {
     private String tag;
 
     @ToString.Exclude
-    @ManyToMany(mappedBy = "tags", fetch= FetchType.EAGER)
+    @ManyToMany(mappedBy = "tags", fetch= FetchType.LAZY)
     private List<BoardData> items = new ArrayList<>();
 }
