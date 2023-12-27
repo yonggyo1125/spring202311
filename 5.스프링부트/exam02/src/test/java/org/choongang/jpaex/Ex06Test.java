@@ -1,5 +1,7 @@
 package org.choongang.jpaex;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.choongang.entities.BoardData;
 import org.choongang.entities.Member;
 import org.choongang.repositories.BoardDataRepository;
@@ -25,6 +27,8 @@ public class Ex06Test {
     @Autowired
     private MemberRepository memberRepository;
 
+    @PersistenceContext
+    private EntityManager em;
 
     @BeforeEach
     void init() {
@@ -41,9 +45,11 @@ public class Ex06Test {
             item.setSubject("제목" + i);
             item.setContent("내용" + i);
             item.setMember(member);
+            items.add(item);
         }
 
         boardDataRepository.saveAllAndFlush(items);
+        em.clear(); // 엔티티 비우기
     }
 
     @Test
@@ -51,5 +57,13 @@ public class Ex06Test {
         BoardData data = boardDataRepository.findById(1L).orElse(null);
         Member member = data.getMember();
         System.out.println(member);
+    }
+
+    @Test
+    void test2() {
+        Member member = memberRepository.findByEmail("user01@test.org");
+        List<BoardData> items = member.getItems();
+        System.out.println(items);
+        items.forEach(System.out::println);
     }
 }

@@ -33,7 +33,7 @@ public class Member extends Base {
     @Column(length=10)
     private MemberType type;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", fetch=FetchType.EAGER)
     private List<BoardData> items = new ArrayList<>();
 
 }
