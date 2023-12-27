@@ -15,6 +15,9 @@ public interface BoardDataRepository extends JpaRepository<BoardData, Long> {
 
     List<BoardData> findBySubjectContainingOrderBySeqDesc(String keyword);
 
-    @Query("SELECT b FROM BoardData b WHERE b.subject LIKE '%:key%' ORDER BY b.seq DESC")
+    @Query("SELECT b FROM BoardData b WHERE b.subject LIKE %:key% ORDER BY b.seq DESC")
     List<BoardData> getSubjects(@Param("key") String keyword);
+
+    @Query("SELECT b FROM BoardData b WHERE b.subject LIKE %:key%")
+    Page<BoardData> getSubjects(@Param("key") String keyword, Pageable pageable);
 }

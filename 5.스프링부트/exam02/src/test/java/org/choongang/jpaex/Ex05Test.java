@@ -3,6 +3,7 @@ package org.choongang.jpaex;
 import org.choongang.entities.BoardData;
 import org.choongang.repositories.BoardDataRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
@@ -28,5 +29,11 @@ public class Ex05Test {
         }
 
         repository.saveAllAndFlush(items);
+    }
+
+    @Test
+    void test1() {
+        List<BoardData> items = repository.getSubjects("목");
+        items.forEach(System.out::println);
     }
 }
