@@ -24,6 +24,6 @@ public class BoardData extends Base {
     @JoinColumn(name="userNo")
     private Member member;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     private List<HashTag> tags = new ArrayList<>();
 }

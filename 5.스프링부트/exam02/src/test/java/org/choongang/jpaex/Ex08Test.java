@@ -5,14 +5,17 @@ import org.choongang.entities.HashTag;
 import org.choongang.repositories.BoardDataRepository;
 import org.choongang.repositories.HashTagRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 @TestPropertySource(properties = "spring.profiles.active=test")
 public class Ex08Test {
 
@@ -43,5 +46,20 @@ public class Ex08Test {
         }
 
         boardDataRepository.saveAllAndFlush(items);
+    }
+
+    @Test
+    void test1() {
+        BoardData item = boardDataRepository.findById(1L).orElse(null);
+        List<HashTag> tags = item.getTags();
+        System.out.println(tags);
+    }
+
+    @Test
+    void test2() {
+        HashTag tag = hashTagRepository.findById("태그1").orElse(null);
+        System.out.println(tag);
+        List<BoardData> items = tag.getItems();
+        items.forEach(System.out::println);
     }
 }
