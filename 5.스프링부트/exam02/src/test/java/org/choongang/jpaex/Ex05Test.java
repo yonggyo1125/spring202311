@@ -1,5 +1,6 @@
 package org.choongang.jpaex;
 
+import com.querydsl.core.BooleanBuilder;
 import org.choongang.entities.BoardData;
 import org.choongang.entities.QBoardData;
 import org.choongang.repositories.BoardDataRepository;
@@ -69,5 +70,24 @@ public class Ex05Test {
         Pageable pageable = PageRequest.of(1, 3,Sort.by(desc("createdAt")));
 
         Page<BoardData> data = repository.findAll(boardData.subject.contains("목"), pageable);
+    }
+
+    @Test
+    void test5() {
+        QBoardData boardData = QBoardData.boardData;
+        BooleanBuilder andBuilder = new BooleanBuilder();
+        BooleanBuilder orBuilder = new BooleanBuilder();
+
+        andBuilder.and(boardData.seq.in(1L, 3L, 5L));
+
+        orBuilder.or(boardData.subject.contains("목"))
+                .or(boardData.content.contains("용"));
+
+        andBuilder.and(orBuilder);
+
+        // (subject LIKE '%목%' OR content LIKE '%목%') AND seq IN (1, 3, 5);
+        List<BoardData> items = (List<BoardData>) repository.findAll(andBuilder);
+        items.forEach(System.out::println);
+
     }
 }
