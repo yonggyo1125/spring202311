@@ -1,9 +1,6 @@
 package org.choongang.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -21,4 +18,5 @@ public class Address {
 
     @Column(length=80)
     private String addr2;
+
 }
