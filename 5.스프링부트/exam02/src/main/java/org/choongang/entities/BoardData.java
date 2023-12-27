@@ -3,6 +3,9 @@ package org.choongang.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 public class BoardData extends Base {
@@ -20,4 +23,7 @@ public class BoardData extends Base {
     @ManyToOne
     @JoinColumn(name="userNo")
     private Member member;
+
+    @ManyToMany
+    private List<HashTag> tags = new ArrayList<>();
 }
