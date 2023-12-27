@@ -9,9 +9,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
-//@TestPropertySource(properties = "spring.profiles.active=test")
+@Transactional
+@TestPropertySource(properties = "spring.profiles.active=test")
 public class Ex06Test {
 
     @Autowired
@@ -30,16 +35,21 @@ public class Ex06Test {
 
         memberRepository.saveAndFlush(member);
 
-        BoardData data = new BoardData();
-        data.setSubject("제목1");
-        data.setContent("내용1");
-        data.setMember(member);
+        List<BoardData> items = new ArrayList<>();
+        for (int i = 1; i <= 10; i++) {
+            BoardData item = new BoardData();
+            item.setSubject("제목" + i);
+            item.setContent("내용" + i);
+            item.setMember(member);
+        }
 
-        boardDataRepository.saveAndFlush(data);
+        boardDataRepository.saveAllAndFlush(items);
     }
 
     @Test
     void test1() {
-
+        BoardData data = boardDataRepository.findById(1L).orElse(null);
+        Member member = data.getMember();
+        System.out.println(member);
     }
 }

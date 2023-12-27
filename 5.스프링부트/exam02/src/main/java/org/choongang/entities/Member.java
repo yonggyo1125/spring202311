@@ -10,7 +10,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,5 +32,8 @@ public class Member extends Base {
     @Enumerated(EnumType.STRING)
     @Column(length=10)
     private MemberType type;
+
+    @OneToMany(mappedBy = "member")
+    private List<BoardData> items = new ArrayList<>();
 
 }
