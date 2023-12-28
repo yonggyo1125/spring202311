@@ -5,6 +5,7 @@ import org.choongang.entities.Member;
 import org.choongang.repositories.BoardDataRepository;
 import org.choongang.repositories.MemberRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
@@ -40,5 +41,12 @@ public class Ex09Test {
         }
 
         repository.saveAllAndFlush(items);
+    }
+
+    @Test
+    void test1() {
+        Member member = memberRepository.findByEmail("user01@test.org");
+        memberRepository.delete(member);
+        memberRepository.flush();
     }
 }
