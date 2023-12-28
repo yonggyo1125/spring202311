@@ -25,5 +25,6 @@ public class BoardData extends Base {
     private Member member;
 
     @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="board_data_tag")
     private List<HashTag> tags = new ArrayList<>();
 }
