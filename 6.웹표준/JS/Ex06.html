@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            window.addEventListener("DOMContentLoaded", function() {
+                frmSchedule.addEventListener("submit", function(e) {
+                    e.preventDefault();
+
+                    const text = frmSchedule.schedule.value.trim();
+                    console.log(text);
+                });
+            });
+        </script>
+        <form name="frmSchedule" method="post">
+            <input type="text" name="schedule" id="schedule">
+        </form>
+
+        <ul id="items">
+
+        </ul>
+    </body>
+</html>
