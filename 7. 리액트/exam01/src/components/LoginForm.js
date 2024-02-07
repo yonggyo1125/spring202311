@@ -6,14 +6,29 @@ const LoginForm = () => {
     userPw: '',
   });
 
+  const [message, setMessage] = useState('');
+
   const onSubmit = (e) => {
     e.preventDefault();
+    
+    try {
+
+        for (const key in form) {
+            const message = ((key === 'userId')? '아이디':'비밀번호') + "를 입력하세요.";
+            if (!form[key].trim()) {
+                throw new Error(message);
+            }
+        }
+
+    } catch (err) {
+        setMessage(err.message);
+    }
   };
 
   const { userId, userPw } = form;
 
   const onChange = (e) => {
-    console.log(e.currentTarget.name, e.currentTarget.value);
+    setForm({ ...form, [e.currentTarget.name]: e.currentTarget.value });
   };
 
   return (
