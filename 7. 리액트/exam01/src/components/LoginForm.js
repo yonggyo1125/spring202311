@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const LoginForm = () => {
-
-    let num = 1;
+    
   const [form, setForm] = useState({
     userId: '',
     userPw: '',
@@ -10,8 +9,13 @@ const LoginForm = () => {
 
   const [message, setMessage] = useState('');
 
+  const countRef = useRef(1);
+
   const onSubmit = (e) => {
     e.preventDefault();
+
+    countRef.current++;
+    console.log(countRef.current);
 
     try {
       for (const key in form) {
