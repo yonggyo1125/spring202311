@@ -1,4 +1,4 @@
-import MyComponent from './components/MyComponent2';
+import MyComponent from './components/MyComponent';
 
 const App = () => {
   const name = '이이름';
