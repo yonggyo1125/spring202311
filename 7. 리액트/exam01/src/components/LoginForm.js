@@ -1,12 +1,19 @@
 import { useState } from 'react';
 
 const LoginForm = () => {
-  const [userId, setUserId] = useState('');
-  const [userPw, setUserPw] = useState('');
+  const [form, setForm] = useState({
+    userId: '',
+    userPw: '',
+  });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+  };
+
+  const { userId, userPw } = form;
+
+  const onChange = (e) => {
+    console.log(e.currentTarget.name, e.currentTarget.value);
   };
 
   return (
@@ -14,10 +21,7 @@ const LoginForm = () => {
       <dl>
         <dt>아이디</dt>
         <dd>
-          <input
-            type="text"
-            onChange={(e) => setUserId(e.currentTarget.value)}
-          />
+          <input type="text" name="userId" onChange={onChange} value={userId} />
         </dd>
       </dl>
       <dl>
@@ -25,7 +29,9 @@ const LoginForm = () => {
         <dd>
           <input
             type="password"
-            onChange={(e) => setUserPw(e.currentTarget.value)}
+            name="userPw"
+            onChange={onChange}
+            value={userPw}
           />
         </dd>
       </dl>
