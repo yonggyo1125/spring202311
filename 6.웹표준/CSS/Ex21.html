@@ -21,6 +21,7 @@
             .menus {
                 display: flex;
                 height: 100px;
+                border: 1px solid #000;
             }
             
             .menus1 {
@@ -29,6 +30,18 @@
 
             .menus1 > div {
                 width: 300px;
+            }
+
+            .menus2 {
+                align-items: flex-start;
+            }
+
+            .menus3 {
+                align-items: flex-end;
+            }
+
+            .menus4 {
+                align-items: center;
             }
         </style>
         <h1>flex-wrap</h1>
@@ -50,21 +63,21 @@
         <br>
         <br>
         
-        <h1></h1>
+        <h1>flex-start("위쪽")</h1>
         <div class="menus menus2">
             <div>메뉴1</div>
             <div>메뉴2</div>
             <div>메뉴3</div>
         </div>
         
-        <h1></h1>
+        <h1>flex-end("아래쪽")</h1>
         <div class="menus menus3">
             <div>메뉴1</div>
             <div>메뉴2</div>
             <div>메뉴3</div>
         </div>
 
-        <h1></h1>
+        <h1>center("가운데")</h1>
         <div class="menus menus4">
             <div>메뉴1</div>
             <div>메뉴2</div>
