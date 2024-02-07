@@ -1,7 +1,7 @@
-import Counter from './components/Counter2';
+import LoginForm from './components/LoginForm';
 
 const App = () => {
-  return <Counter />;
+  return <LoginForm />;
 };
 
 export default App;
