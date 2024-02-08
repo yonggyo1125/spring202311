@@ -6,7 +6,11 @@ class LifeCycle extends Component {
     color: 'black',
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {}
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.color === 'orange') {
+      return { color: nextProps.color };
+    }
+  }
 
   render() {
     const { number, color } = this.state;
@@ -30,3 +34,5 @@ class LifeCycle extends Component {
     );
   }
 }
+
+export default LifeCycle;
