@@ -21,3 +21,5 @@ class ErrorProcess extends Component {
     return error ? <ErrorMessage>{message}</ErrorMessage> : this.props.children;
   }
 }
+
+export default ErrorProcess;

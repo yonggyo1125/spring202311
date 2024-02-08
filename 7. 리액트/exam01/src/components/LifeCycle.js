@@ -40,6 +40,11 @@ class LifeCycle extends Component {
 
   render() {
     console.log('render');
+    const result = false;
+    if (!result) {
+      throw new Error('에러 발생!!!!');
+    }
+
     const { number, color } = this.state;
     return (
       <>
