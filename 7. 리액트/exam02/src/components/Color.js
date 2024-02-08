@@ -6,6 +6,10 @@ const Color = () => {
 
   useEffect(() => {
     console.log('색상 변경:', color);
+
+    return () => {
+      console.log('렌더링 전 뒷정리...');
+    };
   }, [color]);
 
   const boxStyle = {
