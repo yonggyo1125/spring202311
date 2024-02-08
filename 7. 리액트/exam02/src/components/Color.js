@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ColorSelect from './ColorSelect';
 
 const Color = () => {
   const [color, setColor] = useState('gray');
+
+  useEffect(() => {
+    console.log('색상 변경:', color);
+  }, [color]);
 
   const boxStyle = {
     width: '200px',
