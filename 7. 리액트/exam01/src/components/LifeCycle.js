@@ -10,9 +10,36 @@ class LifeCycle extends Component {
     if (nextProps.color === 'orange') {
       return { color: nextProps.color };
     }
+
+    return null;
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  /*
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.number % 2 === 1) {
+      return false;
+    }
+
+    return true;
+  }
+  */
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    return 'snapshot';
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate');
+    console.log('snapshot', snapshot);
+    console.log('prevState', prevState);
   }
 
   render() {
+    console.log('render');
     const { number, color } = this.state;
     return (
       <>
