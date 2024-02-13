@@ -1,5 +1,12 @@
 import { useState } from 'react';
 
+function getAverage(list) {
+  const total = list.reduce((a, b) => a + b);
+
+  const avg = Math.round((total * 100) / list.length) / 100; // 소수점 둘째 자리 까지
+  return avg;
+}
+
 const Average = () => {
   const [number, setNumber] = useState(0);
   const [list, setList] = useState([]);
@@ -23,7 +30,7 @@ const Average = () => {
           <li key={i}>{number}</li>
         ))}
       </ul>
-      <div>평균 : </div>
+      <div>평균 : {getAverage(list)}</div>
     </div>
   );
 };
