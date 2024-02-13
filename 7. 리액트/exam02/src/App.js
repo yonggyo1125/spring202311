@@ -1,7 +1,7 @@
-import Color from './components/Color';
+import Counter from './components/Couter';
 
 const App = () => {
-  return <Color />;
+  return <Counter />;
 };
 
 export default App;

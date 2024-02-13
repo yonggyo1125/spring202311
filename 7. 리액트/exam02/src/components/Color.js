@@ -3,6 +3,13 @@ import ColorSelect from './ColorSelect';
 
 const Color = () => {
   const [color, setColor] = useState('gray');
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then((res) => res.text())
+      .then((data) => setData(data));
+  }, []);
 
   useEffect(() => {
     console.log('색상 변경:', color);
@@ -22,6 +29,7 @@ const Color = () => {
     <>
       <div style={boxStyle}></div>
       <ColorSelect setColor={setColor} />
+      <div>{data}</div>
     </>
   );
 };
