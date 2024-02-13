@@ -1,0 +1,13 @@
+.wrap { 
+    background: skyblue;
+    &:hover {
+        background: blue;
+    }
+}
+
+:global .title {
+    color: red;
+    &.on {
+        border: 2px solid black;
+    }
+}
