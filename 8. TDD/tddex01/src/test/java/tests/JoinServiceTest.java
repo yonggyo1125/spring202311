@@ -1,11 +1,10 @@
 package tests;
 
+import member.controllers.Member;
 import member.service.BadRequestException;
 import member.service.JoinService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Member;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,6 +26,12 @@ public class JoinServiceTest {
     void requiredField() {
         JoinService joinService = new JoinService();
         assertThrows(BadRequestException.class, () -> {
+            Member member = Member.builder()
+                            .userPw("123456")
+                            .confirmPw("123456")
+                            .userNm("사용자01")
+                            .build();
+            
             joinService.join(member);
         });
     }
