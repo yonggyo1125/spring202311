@@ -1,14 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const LoginButton = styled.button`
-  background: orange;
-  border: 0;
-  width: 200px;
-  height: 45px;
-  cursor: pointer;
-  border-radius: 5px;
-`;
+import { MediumButton as LoginButton } from './commons/StyledButton';
 
 const LoginForm = () => {
   return (
@@ -17,7 +8,9 @@ const LoginForm = () => {
       <form>
         <input type="text" name="userId" placeholder="아이디" />
         <input type="password" name="password" placeholder="비밀번호" />
-        <LoginButton type="submit">로그인</LoginButton>
+        <LoginButton type="submit" bcolor="primary" color="#fff">
+          로그인
+        </LoginButton>
       </form>
     </>
   );
