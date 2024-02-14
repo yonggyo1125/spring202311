@@ -1,7 +1,7 @@
-import CSSModule from './components/CSSModule';
+import LoginForm from './components/LoginForm';
 
 const App = () => {
-  return <CSSModule name="이이름" />;
+  return <LoginForm />;
 };
 
 export default App;
