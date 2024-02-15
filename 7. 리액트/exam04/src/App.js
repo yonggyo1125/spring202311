@@ -4,6 +4,7 @@ import About from './pages/About';
 import Profile from './pages/Profile';
 import ProfileHeader from './pages/ProfileHeader';
 import MainLayout from './layouts/MainLayout';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/about" element={<About />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
