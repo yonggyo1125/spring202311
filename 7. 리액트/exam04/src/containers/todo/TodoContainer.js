@@ -34,9 +34,14 @@ const TodoContainer = () => {
     [title],
   );
 
+  const onChange = useCallback(
+    (e) => setTitle(() => e.currentTarget.value.trim()),
+    [],
+  );
+
   return (
     <ContentBox>
-      <TodoForm onSubmit={onSubmit} />
+      <TodoForm onSubmit={onSubmit} onChange={onChange} />
       <TodoList todos={todos} />
     </ContentBox>
   );
