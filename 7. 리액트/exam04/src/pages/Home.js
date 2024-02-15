@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const SplitMe = React.lazy(() => import('../components/SplitMe'));
+
+  const [visible, setVisible] = useState(false);
+
+  const onClick = () => setVisible(true);
+
   return (
     <>
       <h1>Home!</h1>
       <Link to="/about">About 페이지 이동</Link>
+      <button type="button" onClick={onClick}>
+        클릭!
+      </button>
+      <Suspense fallback={<div>Loading....</div>}>
+        {visible && <SplitMe />}
+      </Suspense>
     </>
   );
 };
