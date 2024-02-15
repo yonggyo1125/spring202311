@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import TodoForm from '../../components/todo/TodoForm';
 import TodoList from '../../components/todo/TodoList';
@@ -16,15 +16,27 @@ const ContentBox = styled.div`
   }
 `;
 
-const todos = [
-  { id: 1, title: '할일1' },
-  { id: 2, title: '할일2' },
-];
-
 const TodoContainer = () => {
+  const [todos, setTodos] = useState([]);
+  const [title, setTitle] = useState('');
+
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      setTodos((todos) =>
+        todos.concat({
+          id: todos.length + 1,
+          title,
+        }),
+      );
+    },
+    [title],
+  );
+
   return (
     <ContentBox>
-      <TodoForm />
+      <TodoForm onSubmit={onSubmit} />
       <TodoList todos={todos} />
     </ContentBox>
   );
