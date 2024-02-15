@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
+import { produce } from 'immer';
 import TodoForm from '../../components/todo/TodoForm';
 import TodoList from '../../components/todo/TodoList';
 
@@ -24,25 +25,39 @@ const TodoContainer = () => {
     (e) => {
       e.preventDefault();
 
-      setTodos((todos) =>
-        todos.concat({
-          id: todos.length + 1,
-          title,
+      setTodos(
+        produce((draft) => {
+          draft.push({ id: draft.length + 1, title });
         }),
       );
+
+      setTitle('');
     },
     [title],
   );
 
   const onChange = useCallback(
-    (e) => setTitle(() => e.currentTarget.value.trim()),
+    (e) => setTitle(() => e.target.value.trim()),
+    [],
+  );
+
+  const onDoubleClick = useCallback(
+    (id) =>
+      setTodos(
+        produce((draft) => {
+          draft.splice(
+            draft.findIndex((todo) => todo.id === id),
+            1,
+          );
+        }),
+      ),
     [],
   );
 
   return (
     <ContentBox>
-      <TodoForm onSubmit={onSubmit} onChange={onChange} />
-      <TodoList todos={todos} />
+      <TodoForm onSubmit={onSubmit} onChange={onChange} title={title} />
+      <TodoList todos={todos} onDoubleClick={onDoubleClick} />
     </ContentBox>
   );
 };

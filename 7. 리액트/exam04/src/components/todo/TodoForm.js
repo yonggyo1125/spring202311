@@ -25,10 +25,10 @@ const FormBox = styled.form`
   }
 `;
 
-const TodoForm = ({ onSubmit }) => {
+const TodoForm = ({ onSubmit, onChange, title }) => {
   return (
     <FormBox autoComplete="off" onSubmit={onSubmit}>
-      <input type="text" name="title" />
+      <input type="text" name="title" value={title} onChange={onChange} />
       <button type="submit">
         <FiPlusSquare />
       </button>
