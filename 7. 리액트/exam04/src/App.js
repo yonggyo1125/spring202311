@@ -1,10 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Profile from './pages/Profile';
-import ProfileHeader from './pages/ProfileHeader';
+import loadable from '@loadable/component';
 import MainLayout from './layouts/MainLayout';
-import NotFound from './pages/NotFound';
+const Home = loadable(() => import('./pages/Home'));
+const About = loadable(() => import('./pages/About'));
+const NotFound = loadable(() => import('./pages/NotFound'));
 
 const App = () => {
   return (

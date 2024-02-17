@@ -1,8 +1,12 @@
 import React, { useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import loadable from '@loadable/component';
 
 const Home = () => {
-  const SplitMe = React.lazy(() => import('../components/SplitMe'));
+  //const SplitMe = React.lazy(() => import('../components/SplitMe'));
+  const SplitMe = loadable(() => import('../components/SplitMe'), {
+    fallback: <div>Loading...</div>,
+  });
 
   const [visible, setVisible] = useState(false);
 
@@ -15,9 +19,12 @@ const Home = () => {
       <button type="button" onClick={onClick}>
         클릭!
       </button>
+      {visible && <SplitMe />}
+      {/*
       <Suspense fallback={<div>Loading....</div>}>
         {visible && <SplitMe />}
       </Suspense>
+    */}
     </>
   );
 };
